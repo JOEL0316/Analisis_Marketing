@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2><i class="fas fa-dollar-sign me-2"></i>Análisis de Ventas</h2>
+        <a href="/" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i> Volver
+        </a>
+    </div>
+
+    <div class="card mb-4 border-success">
+        <div class="card-header bg-success text-white">
+            <h4><i class="fas fa-chart-line me-2"></i>Evolución Temporal de Ventas</h4>
+        </div>
+        <div class="card-body">
+            <p>Este gráfico muestra la evolución de las ventas a lo largo del tiempo. Puedes identificar patrones estacionales y puntos máximos de venta.</p>
+            <div class="plot-container">
+                {{ viz.sales_trend|safe }}
+            </div>
+            <div class="alert alert-info mt-3">
+                <strong>Insight:</strong> Las ventas alcanzan su punto máximo en noviembre, probablemente debido a la temporada navideña.
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 border-success">
+        <div class="card-header bg-success text-white">
+            <h4><i class="fas fa-table me-2"></i>Matriz de Correlación</h4>
+        </div>
+        <div class="card-body">
+            <p>La matriz de correlación muestra relaciones lineales entre variables numéricas. Valores cercanos a 1 indican correlación positiva fuerte, valores cercanos a -1 indican correlación negativa fuerte.</p>
+            <div class="plot-container">
+                {{ viz.correlation_matrix|safe }}
+            </div>
+            <div class="alert alert-info mt-3">
+                <strong>Insight:</strong> Existe una alta correlación entre MONTH_ID y QTR_ID, lo que es esperable ya que el trimestre depende del mes.
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4 border-success">
+        <div class="card-header bg-success text-white">
+            <h4><i class="fas fa-chart-scatter me-2"></i>Relación entre Variables</h4>
+        </div>
+        <div class="card-body">
+            <p>Gráfico de dispersión múltiple que muestra las relaciones entre diferentes variables, coloreadas por mes.</p>
+            <div class="plot-container">
+                {{ viz.scatter_matrix|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

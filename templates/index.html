@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="hero-section bg-primary text-white py-5 mb-4 rounded-3">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold"><i class="fas fa-chart-pie me-3"></i>Marketing Analytics Dashboard</h1>
+        <p class="lead">Visualización interactiva de datos de ventas y segmentación de clientes</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-body text-center">
+                <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                <h3 class="card-title">Exploración de Datos</h3>
+                <p class="card-text">Análisis inicial de distribución por país, producto y variables clave.</p>
+                <a href="/data-exploration" class="btn btn-primary stretched-link">Ver Análisis</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 border-success">
+            <div class="card-body text-center">
+                <i class="fas fa-dollar-sign fa-3x text-success mb-3"></i>
+                <h3 class="card-title">Análisis de Ventas</h3>
+                <p class="card-text">Tendencias temporales y patrones estacionales de ventas.</p>
+                <a href="/sales-analysis" class="btn btn-success stretched-link">Ver Tendencias</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 border-danger">
+            <div class="card-body text-center">
+                <i class="fas fa-object-group fa-3x text-danger mb-3"></i>
+                <h3 class="card-title">Segmentación</h3>
+                <p class="card-text">Identificación de grupos de clientes con comportamientos similares.</p>
+                <a href="/clustering" class="btn btn-danger stretched-link">Ver Segmentos</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 border-warning">
+            <div class="card-body text-center">
+                <i class="fas fa-project-diagram fa-3x text-warning mb-3"></i>
+                <h3 class="card-title">Reducción Dimensional</h3>
+                <p class="card-text">Visualización de clusters en espacios 2D y 3D mediante PCA.</p>
+                <a href="/dimensionality-reduction" class="btn btn-warning stretched-link">Ver Proyecciones</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 border-info">
+            <div class="card-body">
+                <h3 class="card-title text-center"><i class="fas fa-info-circle me-2"></i>Acerca del Proyecto</h3>
+                <p>Este dashboard permite analizar datos de ventas mediante:</p>
+                <ul>
+                    <li>Exploración visual de distribuciones</li>
+                    <li>Análisis de tendencias temporales</li>
+                    <li>Segmentación de clientes con K-Means</li>
+                    <li>Visualización de clusters con PCA</li>
+                </ul>
+                <div class="text-center mt-3">
+                    <a href="/data-exploration" class="btn btn-outline-info">Comenzar Exploración</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4 border-secondary">
+    <div class="card-header bg-secondary text-white">
+        <h4 class="mb-0"><i class="fas fa-chart-line me-2"></i>Vista Previa: Evolución de Ventas</h4>
+    </div>
+    <div class="card-body">
+        <div class="plot-container" style="height: 400px;">
+            {{ viz.sales_trend|safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}
